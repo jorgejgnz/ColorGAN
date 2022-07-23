@@ -10,7 +10,7 @@ Implementación en PyTorch de una Red Generativa Adversaria Condicional (cGAN) a
 Se han usado las siguientes implementaciones como referencia:
 
 -  [Pix2Pix Implementation on PyTorch. 2018](https://github.com/eriklindernoren/PyTorch-GAN/blob/master/implementations/pix2pix/pix2pix.py)
--  [Colorizing B&W Images with U-Net and conditional GAN. Moein Shariatnia. 2020](https://github.com/eriklindernoren/PyTorch-GAN/blob/master/implementations/pix2pix/pix2pix.py)
+-  [Colorizing B&W Images with U-Net and conditional GAN. Moein Shariatnia. 2020](https://towardsdatascience.com/colorizing-black-white-images-with-u-net-and-conditional-gan-a-tutorial-81b2df111cd8)
 
 ## Datos
 
@@ -67,13 +67,13 @@ La función de pérdida utilizada es la media del error en valor absoluto (MAE o
 
 ## Entrenamiento
 
-Tanto para el discriminador como para el generador usamos el optimizador Adam con los mismos parámetros.
+Tanto para el discriminador como para el generador se ha usado el optimizador Adam con los mismos parámetros.
 
 Para que el entrenamiento de la GAN sea más estable partiremos de un generador que sea razonablemente bueno coloreando imagenes desde la primera epoch.
 
-Para ello, primero preentrenamos el generador de forma aislada durante 20 epochs. Después del preentrenamiento el generador es capaz de colorear imágenes.
+Para ello, primero se preentrena el generador de forma aislada durante 20 epochs. Después del preentrenamiento el generador es capaz de colorear imágenes.
 
-Después, entrenamos de forma conjunta el generador y el discriminador durante 100 epochs.
+Después, se entrena de forma conjunta el generador y el discriminador durante 100 epochs.
 
 ## Resultados
 

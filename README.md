@@ -2,7 +2,7 @@
 
 <p align="center">
   <span>English</span> |
-  <a href="README.md">Español</a>
+  <a href="README.es-ES.md">Español</a>
 </p>
 
 PyTorch implementation of a Conditional Adversarial Network (cGAN) for Image-to-Image Translation applied to the task of image colorization.
@@ -10,7 +10,7 @@ PyTorch implementation of a Conditional Adversarial Network (cGAN) for Image-to-
 The following implementations have been used as reference:
 
 -  [Pix2Pix Implementation on PyTorch. 2018](https://github.com/eriklindernoren/PyTorch-GAN/blob/master/implementations/pix2pix/pix2pix.py)
--  [Colorizing B&W Images with U-Net and conditional GAN. Moein Shariatnia. 2020](https://github.com/eriklindernoren/PyTorch-GAN/blob/master/implementations/pix2pix/pix2pix.py)
+-  [Colorizing B&W Images with U-Net and conditional GAN. Moein Shariatnia. 2020](https://towardsdatascience.com/colorizing-black-white-images-with-u-net-and-conditional-gan-a-tutorial-81b2df111cd8)
 
 ## Datasets
 
@@ -67,13 +67,13 @@ The loss function used is the mean absolute error (MAE or L1 loss) between the a
 
 ## Training
 
-For both the discriminator and the generator we use Adam optimizer with the same parameters.
+For both the discriminator and the generator Adam optimizer with the same parameters has been used.
 
-To make the GAN training more stable we start with a generator that is reasonably good at coloring images from the first epoch.
+Starting training using a generator that is reasonably good at coloring images from the first epoch will make GAN training more stable.
 
-To do this, we first pre-train the generator in isolation for 20 epochs. After the pre-training, the generator will be able to color images.
+To do this, the generator is previously pretrained in isolation for 20 epochs. After the pre-training, the generator will have an initial notion on how to colorize images.
 
-Then, we jointly train the generator and the discriminator for 100 epochs.
+Then, the generator and the discriminator are trained combined for 100 epochs.
 
 ## Results
 
