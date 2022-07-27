@@ -16,7 +16,7 @@ The following implementations have been used as reference:
 
 The network has been trained with 2 separate datasets:
 -   [Images of Groups](http://chenlab.ece.cornell.edu/people/Andy/ImagesOfGroups.html): Color images of group portraits taken at weddings and other formal social events. As there are fewer samples the network can achieve acceptable results in less time but generalizes worse. Suitable for old family photos.
-    -   4946 samples in total (4900 for training)
+    -   4902 samples in total (4850 for training)
 -   [COCO](https://cocodataset.org/#overview): Varied color images. [COCO Train 2017](http://images.cocodataset.org/zips/train2017.zip) subset. As there are more samples and they are more diverse, the network generalizes better but it takes much longer to reach acceptable results and worse results are obtained for family portraits. Suitable for old photos featuring animals, vehicles or other classes included in the COCO dataset.
     -   7750 samples in total (7700 for training)
 
@@ -81,7 +81,7 @@ For both datasets, good results are obtained for the test samples.
 
 However, all images used for training, for both datasets, are sharp images without cracks or other damage present in older images. When a bad image is passed to it, the network is not able to color it correctly.
 
-This can be fixed by adding artificial stripes and artifacts to the L layer of the images during training, modifying the generator to produce also the L channel and using the 3 channels in the L1 Loss. This way the network would be able to colorize and also fix damaged old photos.
+This can be fixed by adding artificial stripes and artifacts to the L layer of the images during training, modifying the generator to produce also the L channel and using the 3 channels in the L1 Loss. The discriminator would receive the damaged version of the L layer and a Lab image. This way the network would be able to colorize and also fix damaged old photos.
 
 Finally, even better results can be obtained by using a larger number of training samples and training for more epochs, especially for the COCO dataset.
 

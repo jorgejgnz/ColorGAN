@@ -16,7 +16,7 @@ Se han usado las siguientes implementaciones como referencia:
 
 La red ha sido entrenada con 2 datasets por separado:
 -   [Images of Groups](http://chenlab.ece.cornell.edu/people/Andy/ImagesOfGroups.html): Imágenes en color de retratos de grupo tomados en bodas y otros eventos sociales formales. Al ser menos muestras la red puede alcanzar resultados aceptables en menos tiempo pero generaliza peor. Apropiado para fotos familiares antiguas.
-    -   4946 muestras en total (4900 para training)
+    -   4902 muestras en total (4850 para training)
 -   [COCO](https://cocodataset.org/#overview): Imágenes en color variadas. Subset de [COCO Train 2017](http://images.cocodataset.org/zips/train2017.zip). Al ser más muestras y más diversas, la red generaliza mejor pero tarda mucho más en alcanzar resultados aceptables y se obtienen peores resultados para retratos familiares. Apropiada para fotos antiguas en las que aparecen animales, vehículos u otras clases incluidas en el dataset COCO.
     -   7750 muestras en total (7700 para training)
 
@@ -79,9 +79,9 @@ Después, se entrena de forma conjunta el generador y el discriminador durante 1
 
 Para ambos datasets se obtienen resultados buenos para las imágenes de test. 
 
-Sin embargo, todas las imágenes utilizadas para el entrenamiento, para ambos cdatasets, son imágenes nítidas sin grietas ni otros daños presentes en las imágenes antiguas. Cuando se le pasa una imagen dañada, la red no es capaz de colorearla correctamente.
+Sin embargo, todas las imágenes utilizadas para el entrenamiento, para ambos datasets, son imágenes nítidas sin grietas ni otros daños presentes en las imágenes antiguas. Cuando se le pasa una imagen dañada, la red no es capaz de colorearla correctamente.
 
-Esto puede solucionarse añadiendo rayas y artefactos artificiales a la capa L de las imágenes durante el entrenamiento, modificando el generador para que produzca también el canal L y utilizando los 3 canales en la función de pérdida L1. De este modo, la red sería capaz de colorear y también arreglar fotos antiguas dañadas.
+Esto puede solucionarse añadiendo rayas y artefactos artificiales a la capa L de las imágenes durante el entrenamiento, modificando el generador para que produzca también el canal L y utilizando los 3 canales en la función de pérdida L1. El discriminador recibiría la versión dañada de la capa L y una imagen Lab. De este modo, la red sería capaz de colorear y también arreglar fotos antiguas dañadas.
 
 Finalmente, se pueden obtener mejores resultados utilizando un mayor número de muestras de entrenamiento y entrenando durante más epochs, especialmente para el dataset COCO.
 
