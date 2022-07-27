@@ -55,7 +55,7 @@ The data generator in charge of providing each batch performs the following task
 
 ### Discriminator
 
-The discriminator is a [PatchGAN](https://paperswithcode.com/method/patchgan) where the output is a 1-filter, 15x15-dimensional convolutional layer that indicates how real each patch or section of the image is.
+The discriminator architecture used is [PatchGAN](https://arxiv.org/abs/1611.07004) where the output is a 1-filter, 15x15-dimensional convolutional layer that indicates how real each patch or section of the image is. PatchGAN can be understood as a form of texture/style loss. According to authors, using a 16x16 PatchGAN is sufficient to promote sharp outputs.
 
 The loss function of the discriminator is cross-entropy with logits (BCEWithLogitsLoss).
 
@@ -67,7 +67,7 @@ The loss function used is the mean absolute error (MAE or L1 loss) between the a
 
 ## Training
 
-For both the discriminator and the generator Adam optimizer with the same parameters has been used.
+Adam optimizer was used for both the discriminator and the generator. The parameters used are the same as the ones specified in the original [Pix2Pix paper](https://arxiv.org/abs/1611.07004).
 
 Starting training using a generator that is reasonably good at coloring images from the first epoch will make GAN training more stable.
 

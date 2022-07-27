@@ -55,7 +55,7 @@ El generador de datos encargado de proporcionar cada batch realiza las siguiente
 
 ### Discriminador
 
-El discriminador es una [PatchGAN](https://paperswithcode.com/method/patchgan) donde la salida es una capa convolucional de 1 filtro y 15x15 dimensiones que indica cuán real es cada parche o sección de la imagen.
+La arquitectura del discriminador es [PatchGAN](https://paperswithcode.com/method/patchgan), donde la salida es una capa convolucional de 1 filtro y 15x15 dimensiones que indica cuán real es cada parche o sección de la imagen. Los autores indican PatchGAN puede entenderse como una forma de cuantificar el realismo de la textura/estilo de una imagen. De acuerdo con los autores, usar un PatchGAN de 16x16 es suficiente para obtener imágenes definidas.
 
 La función de pérdida del discriminador es entropía cruzada con logits (BCEWithLogitsLoss).
 
@@ -67,7 +67,7 @@ La función de pérdida utilizada es la media del error en valor absoluto (MAE o
 
 ## Entrenamiento
 
-Tanto para el discriminador como para el generador se ha usado el optimizador Adam con los mismos parámetros.
+El optimizador Adam se utilizó tanto para el discriminador como para el generador. Los parámetros utilizados son los mismos que los especificados en el artículo original [Pix2Pix](https://arxiv.org/abs/1611.07004).
 
 Para que el entrenamiento de la GAN sea más estable partiremos de un generador que sea razonablemente bueno coloreando imagenes desde la primera epoch.
 
